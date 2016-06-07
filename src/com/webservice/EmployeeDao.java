@@ -58,6 +58,23 @@ public class EmployeeDao {
 		return emp;
 	}
 	
+	public int addEmployee(Employee emp) {
+		List<Employee> empList = getAllEmployees();
+		boolean employeeExists = false;
+		for (Employee e : empList) {
+			if (e.getId() == emp.getId()) {
+				employeeExists = true;
+				break;
+			}
+		}
+		if (!employeeExists) {
+			empList.add(emp);
+			saveEmpList(empList, employeeFile);
+			return 1;
+		}
+		return 0;
+	}
+	
 	private static void saveEmpList(List<Employee> empList, String employeeFile) {
 		try {
 			File f = new File(employeeFile);
