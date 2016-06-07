@@ -35,11 +35,27 @@ public class EmployeeDao {
 		} catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		Iterator<Employee> itr = empList.iterator();
+		/*Iterator<Employee> itr = empList.iterator();
 		while(itr.hasNext()) {
 			System.out.println(itr.next());
-		}
+		}*/
 		return empList;
+	}
+	
+	public Employee getEmployee(int id) {
+		List<Employee> empList = getAllEmployees();
+		Employee emp = null;
+		
+		Iterator<Employee> itr = empList.iterator();
+		while(itr.hasNext()) {
+			Employee curr = itr.next();
+			if(curr.getId() == id) {
+				emp = curr;
+				break;
+			}
+		}
+		
+		return emp;
 	}
 	
 	private static void saveEmpList(List<Employee> empList, String employeeFile) {
