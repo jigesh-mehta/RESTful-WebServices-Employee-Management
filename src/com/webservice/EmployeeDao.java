@@ -19,7 +19,6 @@ public class EmployeeDao {
 		try {
 			File empFile = new File(employeeFile);
 			if(!empFile.exists()) {
-				System.out.println("New File!!!");
 				Employee emp  = new Employee(1, "Jigesh Mehta", "Software Developer", 100000);
 				empList = new ArrayList<Employee>();
 				empList.add(emp);
@@ -36,7 +35,6 @@ public class EmployeeDao {
 		} catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Here: ");
 		Iterator<Employee> itr = empList.iterator();
 		while(itr.hasNext()) {
 			System.out.println(itr.next());

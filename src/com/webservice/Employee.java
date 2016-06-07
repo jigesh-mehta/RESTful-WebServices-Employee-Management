@@ -76,7 +76,6 @@ public class Employee implements Serializable {
 	}
 	
 	public String toString() {
-		System.out.println("in toString");
 		String s = "ID : " + this.id + " Name : " + this.name + " Profession : " + this.profession + " Salary : " + this.salary + "\n";
 		return s;
 	}
