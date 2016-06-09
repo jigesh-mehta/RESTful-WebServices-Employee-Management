@@ -61,6 +61,7 @@ public class EmployeeDao {
 	public int addEmployee(Employee emp) {
 		List<Employee> empList = getAllEmployees();
 		boolean employeeExists = false;
+		
 		for (Employee e : empList) {
 			if (e.getId() == emp.getId()) {
 				employeeExists = true;
@@ -72,6 +73,39 @@ public class EmployeeDao {
 			saveEmpList(empList, employeeFile);
 			return 1;
 		}
+		
+		return 0;
+	}
+	
+	public int updateEmployee(Employee emp) {
+		List<Employee> empList = getAllEmployees();
+		
+		for (Employee e : empList) {
+			if (e.getId() == emp.getId()) {
+				int index = empList.indexOf(e);
+				empList.set(index, emp);
+				saveEmpList(empList, employeeFile);
+				return 1;
+			}
+		}
+		
+		return 0;
+	}
+	
+	public int deleteEmployee(int id) {
+		List<Employee> empList = getAllEmployees();
+		Employee emp = null;
+		
+		Iterator<Employee> itr = empList.iterator();
+		while(itr.hasNext()) {
+			Employee curr = itr.next();
+			if(curr.getId() == id) {
+				itr.remove();
+				saveEmpList(empList, employeeFile);
+				return 1;
+			}
+		}
+		
 		return 0;
 	}
 	
